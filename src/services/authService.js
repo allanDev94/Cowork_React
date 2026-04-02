@@ -12,7 +12,7 @@ const saveUsers = (users) => {
 };
 
 // REGISTRO
-export const register = (email, password) => {
+export const register = (nombre, apellido, email, telefono, password) => {
   const users = getUsers();
 
   const exists = users.some(user => user.email === email);
@@ -23,7 +23,10 @@ export const register = (email, password) => {
 
   //  simulación de "seguridad básica"
   const newUser = {
+    nombre: nombre.trim(),
+    apellido: apellido.trim(),
     email: email.trim(),
+    telefono: telefono.trim(),
     password: btoa(password), // codificación simple
   };
 

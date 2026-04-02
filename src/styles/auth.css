@@ -44,7 +44,7 @@ body::before {
 }
 
 .auth-container:hover {
-  transform: scale(1.03);
+  transform: scale(1.03); /*¿eliminar?*/
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
   border: 1px solid #d4af37;
 }
@@ -67,7 +67,7 @@ input {
 /*  HOVER */
 input:hover {
   border: 1px solid rgba(212, 175, 55, 0.5);
-  background: #333;
+  
 }
 
 /*  FOCUS (cuando escribes) */
@@ -76,7 +76,7 @@ input:focus {
   box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
-button {
+.button{
   width: 100%;
   padding: 12px;
   margin-top: 10px;
@@ -90,10 +90,13 @@ button {
 
   cursor: pointer;
   transition: all 0.3s ease;
+  
+  border-radius: 15px;
 }
 
+
 /*  hover suave */
-button:hover {
+.button:hover {
   background: #f1c40f;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
@@ -155,3 +158,19 @@ form {
   color: black;
 }
 
+/* Mejor adaptación en pantallas pequeñas */
+@media (max-width: 576px) {
+  .auth-container {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Evita que el body rompa layout en móviles */
+body {
+  min-height: 100vh;
+}

@@ -25,28 +25,33 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Recuperar contraseña</h2>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+      <div className="auth-container w-100" style={{ maxWidth: "400px" }}>
+        <h2 className="mb-3">Recuperar contraseña</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Ingresa tu correo"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form onSubmit={handleSubmit} className="w-100">
+          <input
+            type="email"
+            placeholder="Ingresa tu correo"
+            className="form-control mb-3"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <button type="submit">Enviar</button>
-      </form>
+          <button type="submit" className="button w-100 mt-2">
+            Enviar
+          </button>
+        </form>
 
-      {message && <p className="error">{message}</p>}
+        {message && <p className="error mt-3">{message}</p>}
 
-      <p>
-        ¿Recordaste tu contraseña?{" "}
-        <a href="/" className="auth-link">
-          Inicia sesión
-        </a>
-      </p>
+        <p className="mt-3">
+          ¿Recordaste tu contraseña?{" "}
+          <a href="/" className="auth-link">
+            Inicia sesión
+          </a>
+        </p>
+      </div>
     </div>
   );
 };

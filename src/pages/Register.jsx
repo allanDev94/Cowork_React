@@ -4,7 +4,7 @@ import "../styles/auth.css";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({nombre:"", apellido:"", email: "", telefono:"", password: "", confirmPassword:"" });
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -15,7 +15,7 @@ const Register = () => {
   };
 
   const validate = () => {
-    if (!form.email || !form.password) {
+    if (!form.nombre || !form.apellido || !form.email || !form.telefono || !form.password || !form.confirmPassword) {
       return "Todos los campos son obligatorios";
     }
 
@@ -27,19 +27,23 @@ const Register = () => {
       return "Mínimo 6 caracteres en la contraseña";
     }
 
+    if (form.password !== form.confirmPassword) {
+      return "Las contraseñas no coinciden";
+    }
+
     return null;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const error = validate();
     if (error) {
+      console.log(error);
       setMessage(error);
       return;
     }
 
-    const result = register(form.email, form.password);
+    const result = register(form.nombre, form.apellido, form.email, form.telefono, form.password);
 
     if (!result.success) {
       setMessage(result.message);
@@ -49,34 +53,79 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Crear Cuenta</h2>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+      <div className="auth-container w-100" style={{ maxWidth: "420px" }}>
+        <h2 className="mb-3">Crear Cuenta</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo"
-          onChange={handleChange}
-        />
+        <form onSubmit={handleSubmit} className="w-100">
+          <div className="row">
+            <div className="col-12 col-md-6">
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Nombre"
+                className="form-control mb-3"
+                onChange={handleChange}
+              />
+            </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          onChange={handleChange}
-        />
+            <div className="col-12 col-md-6">
+              <input
+                type="text"
+                name="apellido"
+                placeholder="Apellido"
+                className="form-control mb-3"
+                onChange={handleChange}
+              />
+            </div>
+          </div>
 
-        <button type="submit">Registrarse</button>
-      </form>
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo"
+            className="form-control mb-3"
+            onChange={handleChange}
+          />
 
-      {message && <p className="error">{message}</p>}
+          <input
+            type="text"
+            name="telefono"
+            placeholder="Teléfono"
+            className="form-control mb-3"
+            onChange={handleChange}
+          />
 
-      <p>
-        ¿Ya tienes cuenta? <Link to="/" className="auth-link">
-                Inicia sesión
-            </Link>
-      </p>
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            className="form-control mb-3"
+            onChange={handleChange}
+          />
+
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirmar Contraseña"
+            className="form-control mb-3"
+            onChange={handleChange}
+          />
+
+          <button type="submit" className="button w-100 mt-2">
+            Registrarse
+          </button>
+        </form>
+
+        {message && <p className="error mt-3">{message}</p>}
+
+        <p className="mt-3">
+          ¿Ya tienes cuenta?{" "}
+          <Link to="/" className="auth-link">
+            Inicia sesión
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

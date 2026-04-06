@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     if (form.password.length < 6) {
-      return "La contraseña debe tener mínimo 6 caracteres";
+      return "Contraseña incorrecta";
     }
 
     return null;
@@ -49,41 +49,47 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Autentificación</h2>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+      <div className="auth-container w-100" style={{ maxWidth: "400px" }}>
+        <h2 className="mb-3">Autentificación</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo"
-          onChange={handleChange}
-        />
+        <form onSubmit={handleSubmit} className="w-100">
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo"
+            className="form-control mb-3"
+            onChange={handleChange}
+          />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          onChange={handleChange}
-        />
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            className="form-control mb-3"
+            onChange={handleChange}
+          />
 
-        <button type="submit">Iniciar Sesión</button>
-      </form>
+          <button type="submit" className="button w-100 mt-2">
+            Iniciar Sesión
+          </button>
+        </form>
 
-      {error && <p className="error">{error}</p>}
+        {error && <p className="error mt-3">{error}</p>}
+
+        <p className="mt-3">
+          ¿No tienes cuenta?{" "}
+          <Link to="/register" className="auth-link">
+            Regístrate
+          </Link>
+        </p>
 
         <p>
-        ¿No tienes cuenta?{" "}
-        <Link to="/register" className="auth-link">
-            Regístrate
-        </Link>
-         </p>
-
-         <p>
-            <Link to="/forgot-password" className="auth-link">
-                ¿Olvidaste tu contraseña?
-            </Link>
+          <Link to="/forgot-password" className="auth-link">
+            ¿Olvidaste tu contraseña?
+          </Link>
         </p>
+      </div>
     </div>
   );
 };

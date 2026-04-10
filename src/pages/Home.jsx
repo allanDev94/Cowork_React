@@ -10,7 +10,7 @@ const Home = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="container h-100 d-flex justify-content-center align-items-center">
       <div className="auth-container w-100 text-center" style={{ maxWidth: "400px" }}>
         <h2 className="mb-4">Bienvenido 👋</h2>
 

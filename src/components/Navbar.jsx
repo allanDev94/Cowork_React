@@ -1,13 +1,24 @@
 import { Link } from "react-router"
+import { logout } from "../services/authService";
+import { useNavigate } from "react-router";
 import "../styles/Navbar.css"
 import "../styles/auth.css";
 
 
-const Navbar = () => (
+const Navbar = () => {
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout(); // limpia datos
+        navigate("/"); // vuelve al login
+     };
+    
+     return(
     <>
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/espacios">
+                <Link className="navbar-brand" to="/home">
                     <i className="bi bi-building"></i>
                     <span className="brand-text">CoWork Space</span>
                 </Link>
@@ -24,7 +35,7 @@ const Navbar = () => (
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <Link className="nav-link active" to="/espacios">
+                            <Link className="nav-link active" to="/home">
                                 Espacios
                             </Link>
                         </li>
@@ -36,13 +47,14 @@ const Navbar = () => (
                         </li>
 
                         <li className="nav-item">
-                            <Link
-                                className="nav-link"
-                                to="/"
+
+                            <button
+                                onClick={handleLogout}
+                                className="nav-link btn btn-link"
                                 id="cerrarSesion"
-                            >
+                                >
                                 <i className="bi bi-box-arrow-right"></i> Cerrar Sesión
-                            </Link>
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -50,5 +62,6 @@ const Navbar = () => (
         </nav>
     </>
 )
+}
 
 export default Navbar;

@@ -72,3 +72,12 @@
     color: var(--color-accent-primary) !important;
     border-bottom-color: var(--color-accent-primary);
 }
+
+#cerrarSesion {
+    color: rgba(255, 255, 255, 0.85);
+    border: none;
+}
+
+#cerrarSesion:hover {
+    color: var(--color-accent-primary);
+}

@@ -1,0 +1,104 @@
+export const espacios = [
+  {
+    id: 1,
+    nombre: "Sala Ejecutiva",
+    descripcion:
+      "Espacio profesional diseñado para reuniones de trabajo, presentaciones y encuentros con clientes.",
+    capacidad: "6 a 10 personas",
+    precio: "$15.000 / Hora",
+    estado: "completo",
+    imagen: "/img/1.jpg",
+    caracteristicas: [
+      "Mesa de reuniones ejecutiva",
+      "Pantalla o TV para presentaciones",
+      "Conexión HDMI o inalámbrica",
+      "WiFi de alta velocidad",
+      "Pizarra para planificación",
+    ],
+  },
+  {
+    id: 2,
+    nombre: "Sala Creativa",
+    descripcion:
+      "Espacio dinámico pensado para sesiones de creatividad, talleres y trabajo en equipo.",
+    capacidad: "8 a 12 personas",
+    precio: "$50.000 / Día",
+    estado: "disponible",
+    imagen: "/img/2.jpg",
+    caracteristicas: [
+      "Pizarras para brainstorming",
+      "Mesas modulares movibles",
+      "Material creativo disponible",
+      "Proyector o pantalla",
+      "WiFi de alta velocidad",
+    ],
+  },
+  {
+    id: 3,
+    nombre: "Oficina Privada",
+    descripcion:
+      "Oficina privada ideal para profesionales que buscan un ambiente tranquilo y productivo.",
+    capacidad: "2 a 4 personas",
+    precio: "$10.000 / Hora",
+    estado: "disponible",
+    imagen: "/img/3.jpg",
+    caracteristicas: [
+      "Escritorios y sillas ergonómicas",
+      "Espacio cerrado y silencioso",
+      "WiFi de alta velocidad",
+      "Acceso a áreas comunes",
+      "Iluminación natural",
+    ],
+  },
+  {
+    id: 4,
+    nombre: "Área Colaborativa",
+    descripcion:
+      "Área abierta de coworking pensada para trabajar, conectar y colaborar con otros profesionales.",
+    capacidad: "15 a 20 personas",
+    precio: "$10.000 / Día",
+    estado: "disponible",
+    imagen: "/img/4.jpg",
+    caracteristicas: [
+      "Escritorios compartidos",
+      "Sillas ergonómicas",
+      "WiFi de alta velocidad",
+      "Ambiente colaborativo",
+      "Estaciones de carga",
+    ],
+  },
+  {
+    id: 5,
+    nombre: "Cabina Personal",
+    descripcion:
+      "Cabina individual ideal para videollamadas o momentos de máxima concentración.",
+    capacidad: "1 persona",
+    precio: "$8.000 / Hora",
+    estado: "disponible",
+    imagen: "/img/5.jpg",
+    caracteristicas: [
+      "Aislamiento acústico",
+      "Escritorio compacto",
+      "Conexión eléctrica",
+      "WiFi de alta velocidad",
+      "Iluminación para videollamadas",
+    ],
+  },
+  {
+    id: 6,
+    nombre: "Salón de Eventos",
+    descripcion:
+      "Espacio amplio diseñado para eventos, charlas, talleres y actividades corporativas.",
+    capacidad: "40 a 60 personas",
+    precio: "$250.000 / Día",
+    estado: "completo",
+    imagen: "/img/6.png",
+    caracteristicas: [
+      "Escenario o área de exposición",
+      "Sistema de audio profesional",
+      "Proyector y pantalla",
+      "Micrófonos inalámbricos",
+      "Iluminación para presentaciones",
+    ],
+  },
+];

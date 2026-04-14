@@ -25,7 +25,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="auth-page d-flex justify-content-center align-items-center">
       <div className="auth-container w-100" style={{ maxWidth: "400px" }}>
         <h2 className="mb-3">Recuperar contraseña</h2>
 

@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/home">
+                <Link className="navbar-brand" to="/espacios">
                     <i className="bi bi-building"></i>
                     <span className="brand-text">CoWork Space</span>
                 </Link>
@@ -33,7 +33,7 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <Link className="nav-link active" to="/home">
+                            <Link className="nav-link active" to="/espacios">
                                 Espacios
                             </Link>
                         </li>

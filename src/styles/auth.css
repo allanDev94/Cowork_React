@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  height: 100vh;
+  height: 1vh;
   background: url("../assets/img/login.webp") no-repeat center center/cover;
   justify-content: center;
   align-items: center;

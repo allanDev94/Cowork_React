@@ -14,7 +14,7 @@ const AppRouter = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/*Rutas Privadas */}
-        <Route element={<MainLayout />}>
+        <Route element={<MainLayout/>}>
           <Route path="/home" element={<Home />} />
         </Route>
       </Routes>

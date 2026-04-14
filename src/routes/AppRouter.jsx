@@ -1,9 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ForgotPassword from "../pages/ForgotPassword";
 import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
+import Espacios from "../pages/Espacios";
 const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -15,7 +16,8 @@ const AppRouter = () => {
 
         {/*Rutas Privadas */}
         <Route element={<MainLayout />}>
-          <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Navigate to="/espacios" />} />
+        <Route path="/espacios" element={<Espacios />} />
         </Route>
       </Routes>
     </BrowserRouter>

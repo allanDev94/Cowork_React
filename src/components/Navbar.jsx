@@ -2,8 +2,6 @@ import { Link } from "react-router"
 import { logout } from "../services/authService";
 import { useNavigate } from "react-router";
 import "../styles/Navbar.css"
-import "../styles/auth.css";
-
 
 const Navbar = () => {
 
@@ -12,9 +10,9 @@ const Navbar = () => {
     const handleLogout = () => {
         logout(); // limpia datos
         navigate("/"); // vuelve al login
-     };
+    };
     
-     return(
+    return(
     <>
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid">

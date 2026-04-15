@@ -43,11 +43,12 @@ const handleSubmit = (e) => {
 
   const result = login(form.email, form.password);
 
-  if (!result.success) {
-    setError(result.message);
-  } else {
-    navigate("/espacios");
-  }
+  if (!result.success || !result.user) {
+      setError(result.message || "Error al iniciar sesión");
+    } else {
+      localStorage.setItem("user", JSON.stringify(result.user));
+      navigate("/espacios");
+    }
 };
 
   return (

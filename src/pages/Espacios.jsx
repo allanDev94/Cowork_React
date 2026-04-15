@@ -21,9 +21,9 @@ const Espacios = () => {
               Nuestros Espacios
             </h2>
             <hr className="border-light opacity-50" />
-            <p className="text-secondary">
+            <h3 className="text-white">
               Elige el espacio que mejor se adapte a tus necesidades
-            </p>
+            </h3>
           </div>
 
           {/* GRID */}

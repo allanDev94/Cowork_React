@@ -5,6 +5,8 @@ import ForgotPassword from "../pages/ForgotPassword";
 import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
 import Espacios from "../pages/Espacios";
+import Contacto from "../pages/Contacto";
+
 const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -18,6 +20,7 @@ const AppRouter = () => {
         <Route element={<MainLayout />}>
         <Route path="/home" element={<Navigate to="/espacios" />} />
         <Route path="/espacios" element={<Espacios />} />
+        <Route path="/contacto" element={<Contacto />} />
         </Route>
       </Routes>
     </BrowserRouter>

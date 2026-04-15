@@ -37,6 +37,12 @@ const Navbar = () => {
                                 Espacios
                             </Link>
                         </li>
+                    
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/contacto">
+                                Contacto
+                            </Link>
+                        </li>
 
                         <li className="nav-item">
                             <span className="nav-link" id="usuarioNombre">

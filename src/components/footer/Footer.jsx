@@ -5,7 +5,7 @@ import "../../styles/footer.css"
 
 const Footer= () => {
     return(
-        <footer className="footer mt-auto py-4 bg-dark text-white">
+        <footer className="footer mt-auto py-4 bg-dark text-white text-center">
             <div className="container">
                 <div className="row">
                     <FooterBrand />

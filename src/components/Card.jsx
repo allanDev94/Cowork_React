@@ -33,12 +33,12 @@ const Card = ({ espacio, onReservar }) => {
           </h5>
 
           <p className="card-desc">
-            {espacio.descripcion.slice(0, 70)}...
+            {espacio.descripcion}...
           </p>
 
           <ul className="features">
             <li>✔ {espacio.capacidad}</li>
-            {espacio.caracteristicas.slice(0, 2).map((item, i) => (
+            {espacio.caracteristicas.slice(0, 5).map((item, i) => (
               <li key={i}>✔ {item}</li>
             ))}
           </ul>

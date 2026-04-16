@@ -49,7 +49,7 @@ export const login = (email, password) => {
   }
 
   localStorage.setItem(AUTH_KEY, "true");
-  return { success: true };
+  return { success: true,user };
 };
 
 export const isAuthenticated = () => {

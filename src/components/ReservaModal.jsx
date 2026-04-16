@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { crearReserva } from "../services/reservaService";
 
 const ReservaModal = ({ espacio, onClose }) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const storedUser = localStorage.getItem("user");
+  const user = storedUser ? JSON.parse(storedUser) : null;
 
   const [form, setForm] = useState({
     nombre: "",
@@ -10,16 +11,7 @@ const ReservaModal = ({ espacio, onClose }) => {
     email: user?.email || "",
     fecha: "",
     hora: "",
-  });
-
-  useEffect(() => {
-    if (user) {
-      setForm((prev) => ({
-        ...prev,
-        email: user.email,
-      }));
-    }
-  }, [user]);
+  }); 
 
   if (!espacio) return null;
 

@@ -1,11 +1,21 @@
 import { Link } from "react-router"
 import { logout } from "../services/authService";
 import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
 import "../styles/Navbar.css"
 
 const Navbar = () => {
 
     const navigate = useNavigate();
+    const [nombreUsuario, setNombreUsuario] = useState("Usuario");
+
+    useEffect(() => {
+        const userJSON = localStorage.getItem("user");
+        if (userJSON) {
+            const user = JSON.parse(userJSON);
+            setNombreUsuario(user.nombre || "Usuario");
+        }
+    }, []);
 
     const handleLogout = () => {
         logout(); // limpia datos
@@ -50,7 +60,7 @@ const Navbar = () => {
 
                             <li className="nav-item">
                                 <span className="nav-link" id="usuarioNombre">
-                                    <i className="bi bi-person-circle"></i> Usuario
+                                    <i className="bi bi-person-circle"></i> {nombreUsuario}
                                 </span>
                             </li>
 

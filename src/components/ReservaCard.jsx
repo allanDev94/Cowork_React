@@ -8,6 +8,11 @@ const estadoBadge = {
 const ReservaCard = ({ reserva, onActualizar }) => {
   const badge = estadoBadge[reserva.estado] || { label: reserva.estado, clase: "badge bg-secondary" };
 
+  const formatearFecha = (fecha) => {
+    const [año, mes, dia] = fecha.split("-");
+    return `${dia}/${mes}/${año}`;
+  };
+
   const handleCancelar = () => {
     if (window.confirm("¿Cancelar esta reserva?")) {
       cancelarReserva(reserva.id);
@@ -16,17 +21,17 @@ const ReservaCard = ({ reserva, onActualizar }) => {
   };
 
   return (
-    <div className="card shadow-sm border-0 h-100">
+    <div className="card shadow-sm border-0 h-100" style={{ minWidth: "220px" }}>
       <div className="card-body d-flex flex-column gap-2">
 
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between align-items-center" style={{ flexWrap: "wrap", gap: "8px" }}>
           <h5 className="card-title mb-0">{reserva.sala}</h5>
           <span className={badge.clase}>{badge.label}</span>
         </div>
 
         <p className="mb-0 text-muted">
           <i className="bi bi-calendar3 me-1"></i>
-          {reserva.fecha} — {reserva.hora}
+          {formatearFecha(reserva.fecha)} — Hora: {reserva.hora}
         </p>
 
         <p className="mb-0 text-muted">

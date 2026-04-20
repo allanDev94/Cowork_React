@@ -11,8 +11,9 @@ html, body, #root {
 }
 
 .main-content {
-  display: flex ;
   padding: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
@@ -20,7 +21,10 @@ body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
 
-  background: url("../assets/img/login.webp") no-repeat center center/cover;
+  background: url("../assets/img/login.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   position: relative;
 }
 

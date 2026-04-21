@@ -51,7 +51,7 @@ const Formulario = () => {
 
       <div className="contact-field">
         <label className="contact-label" htmlFor="nombre">
-          Nombre
+          Nombre*
         </label>
         <input
           id="nombre"
@@ -67,7 +67,7 @@ const Formulario = () => {
 
       <div className="contact-field">
         <label className="contact-label" htmlFor="email">
-          Correo electronico
+          Correo electrónico*
         </label>
         <input
           id="email"
@@ -83,7 +83,7 @@ const Formulario = () => {
 
       <div className="contact-field">
         <label className="contact-label" htmlFor="mensaje">
-          Mensaje
+          Mensaje*
         </label>
         <textarea
           id="mensaje"

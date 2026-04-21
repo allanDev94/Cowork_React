@@ -62,7 +62,7 @@ const MisReservas = () => {
         ) : (
           <div className="row g-4">
             {reservasFiltradas.map((reserva) => (
-              <div className="col-12 col-sm-6 col-lg-4" key={reserva.id}>
+              <div className="col-12 col-sm-6 col-lg-3" key={reserva.id}>
                 <ReservaCard
                   reserva={reserva}
                   onActualizar={cargarReservas}

@@ -13,6 +13,13 @@ const ReservaModal = ({ espacio, onClose }) => {
     hora: "",
   }); 
 
+  const horas = [
+    "08:00", "09:00", "10:00", "11:00",
+    "12:00", "13:00", "14:00", "15:00",
+    "16:00", "17:00", "18:00"
+  ];
+
+
   if (!espacio) return null;
 
   const handleChange = (e) => {
@@ -89,12 +96,20 @@ const ReservaModal = ({ espacio, onClose }) => {
               onChange={handleChange}
             />
 
-            <input
-              type="time"
+            <select
               name="hora"
               className="form-control"
+              value={form.hora}
               onChange={handleChange}
-            />
+            >
+              <option value="">Selecciona una hora</option>
+
+              {horas.map((h) => (
+                <option key={h} value={h}>
+                  {h}
+                </option>
+              ))}
+            </select>
 
           </div>
 

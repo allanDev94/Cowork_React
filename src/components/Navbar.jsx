@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import { NavLink } from "react-router"
 import { logout } from "../services/authService";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
@@ -26,10 +27,10 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/home">
+                    <NavLink className="navbar-brand" to="/home">
                         <i className="bi bi-building"></i>
                         <span className="brand-text">CoWork Space</span>
-                    </Link>
+                    </NavLink>
 
                     <button
                         className="navbar-toggler"
@@ -43,19 +44,25 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/home">
+                                <NavLink className={({ isActive }) => 
+                                    isActive ? "nav-link active" : "nav-link"
+                                } to="/espacios">
                                     Espacios
-                                </Link>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/mis-reservas">
+                                <NavLink className={({ isActive }) => 
+                                    isActive ? "nav-link active" : "nav-link"
+                                } to="/mis-reservas">
                                     Mis Reservas
-                                </Link>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/contacto">
+                                <NavLink className={({ isActive }) => 
+                                    isActive ? "nav-link active" : "nav-link"
+                                } to="/contacto">
                                     Contacto
-                                </Link>
+                                </NavLink>
                             </li>
 
                             <li className="nav-item">

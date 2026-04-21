@@ -32,7 +32,7 @@ const MisReservas = () => {
 
   return (
     <section className="espacios-section">
-      <div className="container">
+      <div className="container ">
 
         <div className="text-center mb-4 titulo-espacios">
           <h2 className="display-5 fw-bold text-light">Mis Reservas</h2>
@@ -62,7 +62,7 @@ const MisReservas = () => {
         ) : (
           <div className="row g-4">
             {reservasFiltradas.map((reserva) => (
-              <div className="col-12 col-sm-6 col-lg-3" key={reserva.id}>
+              <div className="col-10 col-sm-6 col-lg-6" key={reserva.id}>
                 <ReservaCard
                   reserva={reserva}
                   onActualizar={cargarReservas}

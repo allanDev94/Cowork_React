@@ -7,6 +7,7 @@
   background: #fff;
   transition: all 0.25s ease;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .espacio-card:hover {

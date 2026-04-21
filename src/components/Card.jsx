@@ -1,6 +1,6 @@
 const Card = ({ espacio, onReservar }) => {
   return (
-    <div className="col-12 col-sm-6 col-lg-4 col-xl-3">
+    <div className="">
       <div className="card espacio-card h-100 shadow-sm border-0">
 
         {/* Imagen */}

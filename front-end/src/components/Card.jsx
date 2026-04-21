@@ -31,9 +31,9 @@ const Card = ({ espacio, onReservar }) => {
           <h5 className="card-title text-center mb-2">
             {espacio.nombre}
           </h5>
-
+          
           <p className="card-desc">
-            {espacio.descripcion}...
+            {espacio.descripcion}
           </p>
 
           <ul className="features">

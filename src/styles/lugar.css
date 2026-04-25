@@ -7,23 +7,23 @@
 
 .lugar:hover,
 .lugar.active {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    background-color: var(--color-dark-secondary);
-    color: var(--color-accent-primary)!important;
-    border-bottom-color: var(--color-accent-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  background-color: var(--color-dark-secondary);
+  color: var(--color-accent-primary) !important;
+  border-bottom-color: var(--color-accent-primary);
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.85) !important;
-    font-weight: 500;
-    transition: var(--transition-fast);
-    border-bottom: 2px solid transparent;
-    padding-bottom: 0.3rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  transition: var(--transition-fast);
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.3rem !important;
 }
 
 .nav-link:hover,
 .lugar.active {
-    color: var(--color-accent-primary) !important;
-    border-bottom-color: var(--color-accent-primary);
+  color: var(--color-accent-primary) !important;
+  border-bottom-color: var(--color-accent-primary);
 }

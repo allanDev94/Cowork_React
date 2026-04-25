@@ -18,11 +18,10 @@ const Espacios = () => {
 
   //filtrado de espacios por lugar
   const espaciosFiltrados = lugar
-    ? espacios.filter(e => e.lugar.toLowerCase() === lugar.toLowerCase())
+    ? espacios.filter((e) => e.lugar.toLowerCase() === lugar.toLowerCase())
     : espacios;
 
   const esUno = espaciosFiltrados.length === 1;
-
 
   const handleReservar = (espacio) => {
     setSelectedEspacio(espacio);
@@ -32,19 +31,15 @@ const Espacios = () => {
     <main className="main-content">
       <section className="espacios">
         <div className="container ">
-
           {/* HEADER */}
           <div className="text-center mb-4 titulo-espacios">
-            <h2 className="display-5 fw-bold text-light">
-              Nuestros Espacios
-            </h2>
+            <h2 className="display-5 fw-bold text-light">Nuestros Espacios</h2>
             <hr className="border-light opacity-50" />
-            <Lugares/>
+            <Lugares />
             <h3 className="text-white">
               {lugar
                 ? `Espacios en ${lugar}`
-                : "Elige el espacio que mejor se adapte a tus necesidades"
-              }
+                : "Elige el espacio que mejor se adapte a tus necesidades"}
             </h3>
           </div>
 
@@ -54,26 +49,20 @@ const Espacios = () => {
               <motion.div
                 key={espacio.id}
                 className={
-                  esUno 
-                  ? "col-12 col-md-6 col-lg-8"
-                  : "col-12 col-md-6 col-lg-4"
+                  esUno
+                    ? "col-12 col-md-6 col-lg-8"
+                    : "col-12 col-md-6 col-lg-4"
                 }
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1}}
+                animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card
-                  espacio={espacio}
-                  onReservar={handleReservar}
-                />
-
+                <Card espacio={espacio} onReservar={handleReservar} />
               </motion.div>
-              
-              ))}
+            ))}
           </div>
-
         </div>
       </section>
 
@@ -87,7 +76,6 @@ const Espacios = () => {
 };
 
 export default Espacios;
-
 
 /*grid antiguo(sin animacion)
 {espacios.map((espacio) => (

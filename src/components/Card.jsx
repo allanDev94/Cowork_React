@@ -2,7 +2,6 @@ const Card = ({ espacio, onReservar }) => {
   return (
     <div className="">
       <div className="card espacio-card h-100 shadow-sm border-0">
-
         {/* Imagen */}
         <div className="card-img-container">
           <img
@@ -14,27 +13,18 @@ const Card = ({ espacio, onReservar }) => {
           {/* Badge flotante */}
           <span
             className={`badge-custom ${
-              espacio.estado === "completo"
-                ? "badge-danger"
-                : "badge-gold"
+              espacio.estado === "completo" ? "badge-danger" : "badge-gold"
             }`}
           >
-            {espacio.estado === "completo"
-              ? "Completo"
-              : "Disponible"}
+            {espacio.estado === "completo" ? "No disponible" : "Disponible"}
           </span>
         </div>
 
         {/* Body */}
         <div className="card-body d-flex flex-column">
+          <h5 className="card-title text-center mb-2">{espacio.nombre}</h5>
 
-          <h5 className="card-title text-center mb-2">
-            {espacio.nombre}
-          </h5>
-
-          <p className="card-desc">
-            {espacio.descripcion}...
-          </p>
+          <p className="card-desc">{espacio.descripcion}...</p>
 
           <ul className="features">
             <li>✔ {espacio.capacidad}</li>
@@ -47,11 +37,13 @@ const Card = ({ espacio, onReservar }) => {
           <div className="card-footer-custom mt-auto">
             <span className="price">{espacio.precio}</span>
 
-            <button className="btn btn-gold" onClick={() => onReservar(espacio)}>
+            <button
+              className="btn btn-gold"
+              onClick={() => onReservar(espacio)}
+            >
               Reservar
             </button>
           </div>
-
         </div>
       </div>
     </div>

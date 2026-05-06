@@ -7,7 +7,9 @@
   background: #fff;
   transition: all 0.25s ease;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .espacio-card:hover {
@@ -124,11 +126,11 @@
   }
 
   .espacios-section {
-  position: relative;
-  background: url("/img/tu-imagen.jpg") no-repeat center;
-  background-size: cover;
-  z-index: 1;
-}
+    position: relative;
+    background: url("/img/tu-imagen.jpg") no-repeat center;
+    background-size: cover;
+    z-index: 1;
+  }
 
   .card-img-top {
     height: 180px;
@@ -150,4 +152,3 @@
 .container {
   max-width: 1900px;
 }
-

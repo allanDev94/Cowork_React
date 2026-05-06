@@ -2,7 +2,7 @@ export const espacios = [
   {
     id: 1,
     nombre: "Sala Ejecutiva",
-    lugar:"ñuñoa",
+    lugar: "ñuñoa",
     descripcion:
       "Espacio profesional diseñado para reuniones de trabajo, presentaciones y encuentros con clientes.",
     capacidad: "6 a 10 personas",
@@ -20,7 +20,7 @@ export const espacios = [
   {
     id: 2,
     nombre: "Sala Creativa",
-    lugar:"Los Andes",
+    lugar: "Los Andes",
     descripcion:
       "Espacio dinámico pensado para sesiones de creatividad, talleres y trabajo en equipo.",
     capacidad: "8 a 12 personas",
@@ -38,7 +38,7 @@ export const espacios = [
   {
     id: 3,
     nombre: "Oficina Privada",
-    lugar:"Providencia",
+    lugar: "Providencia",
     descripcion:
       "Oficina privada ideal para profesionales que buscan un ambiente tranquilo y productivo.",
     capacidad: "2 a 4 personas",
@@ -56,7 +56,7 @@ export const espacios = [
   {
     id: 4,
     nombre: "Área Colaborativa",
-    lugar:"ñuñoa",
+    lugar: "ñuñoa",
     descripcion:
       "Área abierta de coworking pensada para trabajar, conectar y colaborar con otros profesionales.",
     capacidad: "15 a 20 personas",
@@ -74,7 +74,7 @@ export const espacios = [
   {
     id: 5,
     nombre: "Cabina Personal",
-    lugar:"Los Andes",
+    lugar: "Los Andes",
     descripcion:
       "Cabina individual ideal para videollamadas o momentos de máxima concentración.",
     capacidad: "1 persona",
@@ -92,7 +92,7 @@ export const espacios = [
   {
     id: 6,
     nombre: "Salón de Eventos",
-    lugar:"Los Andes",
+    lugar: "Los Andes",
     descripcion:
       "Espacio amplio diseñado para eventos, charlas, talleres y actividades corporativas.",
     capacidad: "40 a 60 personas",

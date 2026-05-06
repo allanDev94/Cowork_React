@@ -63,7 +63,6 @@ input {
 /*  HOVER */
 input:hover {
   border: 1px solid rgba(212, 175, 55, 0.5);
-  
 }
 
 /*  FOCUS (cuando escribes) */
@@ -72,7 +71,7 @@ input:focus {
   box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
-.button{
+.button {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
@@ -86,10 +85,9 @@ input:focus {
 
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   border-radius: 15px;
 }
-
 
 /*  hover suave */
 .button:hover {
@@ -130,7 +128,6 @@ form {
   color: #f1c40f;
   text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
 }
-
 
 /* boton de cerrar sesion (temporal) */
 

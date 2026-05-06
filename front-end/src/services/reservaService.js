@@ -22,7 +22,7 @@ export const crearReserva = (reserva) => {
 
 export const cancelarReserva = (id) => {
   const reservas = getReservas().map((r) =>
-    r.id === id ? { ...r, estado: "cancelada" } : r
+    r.id === id ? { ...r, estado: "cancelada" } : r,
   );
   localStorage.setItem(KEY, JSON.stringify(reservas));
 };

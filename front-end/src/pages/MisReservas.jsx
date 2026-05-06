@@ -33,13 +33,10 @@ const MisReservas = () => {
   return (
     <section className="espacios-section">
       <div className="container ">
-
         <div className="text-center mb-4 titulo-espacios">
           <h2 className="display-5 fw-bold text-light">Mis Reservas</h2>
           <hr className="border-light opacity-50" />
-          <h3 className="text-white">
-            Revisa el estado de tus reservas
-          </h3>
+          <h3 className="text-white">Revisa el estado de tus reservas</h3>
         </div>
 
         {/* TABS */}
@@ -58,20 +55,18 @@ const MisReservas = () => {
 
         {/* CONTENIDO */}
         {reservasFiltradas.length === 0 ? (
-          <p className="text-white text-center">No hay reservas en esta sección.</p>
+          <p className="text-white text-center">
+            No hay reservas en esta sección.
+          </p>
         ) : (
           <div className="row g-4">
             {reservasFiltradas.map((reserva) => (
               <div className="col-10 col-sm-6 col-lg-6" key={reserva.id}>
-                <ReservaCard
-                  reserva={reserva}
-                  onActualizar={cargarReservas}
-                />
+                <ReservaCard reserva={reserva} onActualizar={cargarReservas} />
               </div>
             ))}
           </div>
         )}
-
       </div>
     </section>
   );

@@ -4,7 +4,14 @@ import "../styles/auth.css";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const [form, setForm] = useState({nombre:"", apellido:"", email: "", telefono:"", password: "", confirmPassword:"" });
+  const [form, setForm] = useState({
+    nombre: "",
+    apellido: "",
+    email: "",
+    telefono: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -15,7 +22,14 @@ const Register = () => {
   };
 
   const validate = () => {
-    if (!form.nombre || !form.apellido || !form.email || !form.telefono || !form.password || !form.confirmPassword) {
+    if (
+      !form.nombre ||
+      !form.apellido ||
+      !form.email ||
+      !form.telefono ||
+      !form.password ||
+      !form.confirmPassword
+    ) {
       return "Todos los campos son obligatorios";
     }
 
@@ -43,7 +57,13 @@ const Register = () => {
       return;
     }
 
-    const result = register(form.nombre, form.apellido, form.email, form.telefono, form.password);
+    const result = register(
+      form.nombre,
+      form.apellido,
+      form.email,
+      form.telefono,
+      form.password,
+    );
 
     if (!result.success) {
       setMessage(result.message);

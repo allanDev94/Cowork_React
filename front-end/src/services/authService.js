@@ -15,7 +15,7 @@ const saveUsers = (users) => {
 export const register = (nombre, apellido, email, telefono, password) => {
   const users = getUsers();
 
-  const exists = users.some(user => user.email === email);
+  const exists = users.some((user) => user.email === email);
 
   if (exists) {
     return { success: false, message: "No fue posible procesar la solicitud" };
@@ -41,7 +41,7 @@ export const login = (email, password) => {
   const users = getUsers();
 
   const user = users.find(
-    u => u.email === email && u.password === btoa(password)
+    (u) => u.email === email && u.password === btoa(password),
   );
 
   if (!user) {
@@ -49,7 +49,7 @@ export const login = (email, password) => {
   }
 
   localStorage.setItem(AUTH_KEY, "true");
-  return { success: true,user };
+  return { success: true, user };
 };
 
 export const isAuthenticated = () => {

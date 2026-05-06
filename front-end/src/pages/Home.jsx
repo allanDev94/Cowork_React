@@ -11,13 +11,13 @@ const Home = () => {
 
   return (
     <div className="container h-100 d-flex justify-content-center align-items-center">
-      <div className="auth-container w-100 text-center" style={{ maxWidth: "400px" }}>
+      <div
+        className="auth-container w-100 text-center"
+        style={{ maxWidth: "400px" }}
+      >
         <h2 className="mb-4">Bienvenido 👋</h2>
 
-        <button
-          onClick={handleLogout}
-          className="logout-btn w-100"
-        >
+        <button onClick={handleLogout} className="logout-btn w-100">
           Cerrar sesión
         </button>
       </div>

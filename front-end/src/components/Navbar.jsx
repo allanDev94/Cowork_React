@@ -64,6 +64,13 @@ const Navbar = () => {
                                     Contacto
                                 </NavLink>
                             </li>
+                             <li className="nav-item">
+                                <NavLink className={({ isActive }) => 
+                                    isActive ? "nav-link active" : "nav-link"
+                                } to="/nosotros">
+                                    Nosotros
+                                </NavLink>
+                            </li>
 
                             <li className="nav-item">
                                 <span className="nav-link" id="usuarioNombre">

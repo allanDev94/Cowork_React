@@ -7,12 +7,14 @@ import MainLayout from "../layouts/MainLayout";
 import Espacios from "../pages/Espacios";
 import Contacto from "../pages/Contacto";
 import MisReservas from "../pages/MisReservas";
+import About from "../components/About";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
         {/*Rutas Publicas*/}
+        <Route path="/nosotros" element={<About />} />
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -74,7 +74,7 @@ export const espacios = [
   {
     id: 5,
     nombre: "Cabina Personal",
-    lugar: "Los Andes",
+    lugar: "Providencia",
     descripcion:
       "Cabina individual ideal para videollamadas o momentos de máxima concentración.",
     capacidad: "1 persona",

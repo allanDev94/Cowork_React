@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getReservasByEmail } from "../services/reservaService";
 import ReservaCard from "../components/ReservaCard";
+import "../styles/reservas.css";
 
 const TABS = [
   { key: "historial", label: "Historial" },
@@ -31,37 +32,43 @@ const MisReservas = () => {
       : reservas.filter((r) => r.estado === tabActiva);
 
   return (
-    <section className="espacios-section">
-      <div className="container ">
-        <div className="text-center mb-4 titulo-espacios">
-          <h2 className="display-5 fw-bold text-light">Mis Reservas</h2>
-          <hr className="border-light opacity-50" />
-          <h3 className="text-white">Revisa el estado de tus reservas</h3>
+    <section className="mis-reservas-section">
+      <div className="container">
+        <div className="text-center mb-5 titulo-reservas">
+          <h2 className="display-5 fw-bold text-white">Mis Reservas</h2>
+
+          <hr className="divider-reservas" />
+
+          <h3 className="subtitle-reservas">
+            Revisa el estado de tus reservas
+          </h3>
         </div>
 
         {/* TABS */}
-        <ul className="nav nav-tabs mb-4">
-          {TABS.map((tab) => (
-            <li className="nav-item" key={tab.key}>
-              <button
-                className={`nav-link ${tabActiva === tab.key ? "active" : "text-light"}`}
-                onClick={() => setTabActiva(tab.key)}
-              >
-                {tab.label}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="tabs-container">
+          <ul className="nav nav-tabs custom-tabs">
+            {TABS.map((tab) => (
+              <li className="nav-item" key={tab.key}>
+                <button
+                  className={`nav-link ${
+                    tabActiva === tab.key ? "active" : ""
+                  }`}
+                  onClick={() => setTabActiva(tab.key)}
+                >
+                  {tab.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {/* CONTENIDO */}
         {reservasFiltradas.length === 0 ? (
-          <p className="text-white text-center">
-            No hay reservas en esta sección.
-          </p>
+          <div className="empty-reservas">No hay reservas en esta sección.</div>
         ) : (
           <div className="row g-4">
             {reservasFiltradas.map((reserva) => (
-              <div className="col-10 col-sm-6 col-lg-6" key={reserva.id}>
+              <div className="col-12 col-md-6 col-xl-4" key={reserva.id}>
                 <ReservaCard reserva={reserva} onActualizar={cargarReservas} />
               </div>
             ))}

@@ -4,6 +4,7 @@ import { logout } from "../services/authService";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import "../styles/Navbar.css";
+import logo from "../assets/img/cobowork.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -27,8 +28,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/home">
-            <i className="bi bi-building"></i>
-            <span className="brand-text">CoWork Space</span>
+            <img src={logo} alt="CoWork logo" className="logo-navbar" />
           </NavLink>
 
           <button
@@ -70,6 +70,17 @@ const Navbar = () => {
                   to="/contacto"
                 >
                   Contacto
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                  to="/about"
+                >
+                  Quienes Somos
                 </NavLink>
               </li>
 

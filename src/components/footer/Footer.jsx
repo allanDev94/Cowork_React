@@ -17,7 +17,7 @@ const Footer = () => {
 
         <div className="text-center">
           <span className="text-muted">
-            &copy; {new Date().getFullYear()} CoWork Space. Todos los derechos
+            &copy; {new Date().getFullYear()} CoboWork. Todos los derechos
             reservados.
           </span>
         </div>

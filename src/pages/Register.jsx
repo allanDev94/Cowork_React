@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { register } from "../services/authService";
+//import { register } from "../services/authService";
 import "../styles/auth.css";
 import { Link } from "react-router-dom";
+import { registro, iniciarSesion } from "../../api.js";
+import { useAuth, AUTH_ACTIONS  } from "../context/AuthContext";
 
 const Register = () => {
   const [form, setForm] = useState({
     nombre: "",
     apellido: "",
-    email: "",
-    telefono: "",
-    password: "",
+    correo: "",
+    numero: "",
+    constraseña: "",
     confirmPassword: "",
   });
+  const { dispatch } = useAuth();
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -25,30 +28,30 @@ const Register = () => {
     if (
       !form.nombre ||
       !form.apellido ||
-      !form.email ||
-      !form.telefono ||
-      !form.password ||
+      !form.correo ||
+      !form.numero ||
+      !form.constraseña ||
       !form.confirmPassword
     ) {
       return "Todos los campos son obligatorios";
     }
 
-    if (!form.email.includes("@")) {
+    if (!form.correo.includes("@")) {
       return "Correo inválido";
     }
 
-    if (form.password.length < 6) {
+    if (form.constraseña.length < 6) {
       return "Mínimo 6 caracteres en la contraseña";
     }
 
-    if (form.password !== form.confirmPassword) {
+    if (form.constraseña !== form.confirmPassword) {
       return "Las contraseñas no coinciden";
     }
 
     return null;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const error = validate();
     if (error) {
@@ -57,19 +60,36 @@ const Register = () => {
       return;
     }
 
-    const result = register(
-      form.nombre,
-      form.apellido,
-      form.email,
-      form.telefono,
-      form.password,
-    );
-
-    if (!result.success) {
-      setMessage(result.message);
-    } else {
+    try{
+      await registro(form.nombre, form.apellido, form.numero, form.correo, form.constraseña);
       setMessage("Cuenta creada correctamente 🎉");
+      const data = await iniciarSesion(form.correo, form.constraseña);
+      const payload = JSON.parse(atob(data.token.split(".")[1]));
+      dispatch({
+        type: AUTH_ACTIONS.LOGIN,
+        payload: {
+          token: data.token,
+          usuario: { id: payload.id, correo: payload.correo, rol: payload.rol },
+        }
+      })
+
+    }catch(err){
+      setMessage(err.message)
     }
+
+    // const result = register(
+    //   form.nombre,
+    //   form.apellido,
+    //   form.correo,
+    //   form.numero,
+    //   form.constraseña,
+    // );
+
+    // if (!result.success) {
+    //   setMessage(result.message);
+    // } else {
+    //   setMessage("Cuenta creada correctamente 🎉");
+    // }
   };
 
   return (
@@ -102,7 +122,7 @@ const Register = () => {
 
           <input
             type="email"
-            name="email"
+            name="correo"
             placeholder="Correo"
             className="form-control mb-3"
             onChange={handleChange}
@@ -110,7 +130,7 @@ const Register = () => {
 
           <input
             type="text"
-            name="telefono"
+            name="numero"
             placeholder="Teléfono"
             className="form-control mb-3"
             onChange={handleChange}
@@ -118,7 +138,7 @@ const Register = () => {
 
           <input
             type="password"
-            name="password"
+            name="constraseña"
             placeholder="Contraseña"
             className="form-control mb-3"
             onChange={handleChange}

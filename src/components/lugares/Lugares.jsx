@@ -1,22 +1,22 @@
-import { espacios } from "../../data/espacios";
+//import { espacios } from "../../data/espacios";
 import Lugar from "../lugares/Lugar";
 import { useNavigate, useLocation } from "react-router";
 
-const Lugares = () => {
+const Lugares = ({espacios}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   // Obtener filtro desde URL
   const params = new URLSearchParams(location.search);
-  const lugarActivo = params.get("lugar");
+  const lugarActivo = params.get("ubicacion");
 
-  const lugaresUnicos = [...new Set(espacios.map((e) => e.lugar))];
+  const lugaresUnicos = [...new Set(espacios.map((e) => e.ubicacion))];
 
-  const handleClick = (lugar) => {
-    if (lugarActivo === lugar) {
+  const handleClick = (ubicacion) => {
+    if (lugarActivo === ubicacion) {
       navigate("/espacios"); // si ya esta activo, quita el filtro
     } else {
-      navigate(`/espacios?lugar=${encodeURIComponent(lugar)}`);
+      navigate(`/espacios?ubicacion=${encodeURIComponent(ubicacion)}`);
     }
   };
 
@@ -24,12 +24,12 @@ const Lugares = () => {
     <>
       <div className="container">
         <div className="row g-3 justify-content-center">
-          {lugaresUnicos.map((lugar, i) => (
+          {lugaresUnicos.map((ubicacion, i) => (
             <Lugar
               key={i}
-              lugar={lugar}
+              ubicacion={ubicacion}
               onClick={handleClick}
-              isActive={lugarActivo === lugar}
+              isActive={lugarActivo === ubicacion}
             />
           ))}
         </div>

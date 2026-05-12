@@ -2,21 +2,23 @@ import { Link } from "react-router";
 import { NavLink } from "react-router";
 import { logout } from "../services/authService";
 import { useNavigate } from "react-router";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import "../styles/Navbar.css";
 import logo from "../assets/img/cobowork.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [nombreUsuario, setNombreUsuario] = useState("Usuario");
+  // const [nombreUsuario, setNombreUsuario] = useState("correo");
 
-  useEffect(() => {
-    const userJSON = localStorage.getItem("user");
-    if (userJSON) {
-      const user = JSON.parse(userJSON);
-      setNombreUsuario(user.nombre || "Usuario");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const userJSON = localStorage.getItem("usuario");
+  //   if (userJSON) {
+  //     const user = JSON.parse(userJSON);
+  //     setNombreUsuario(user.nombre || "Usuario");
+  //   }
+  // }, []);
+  const userJSON = localStorage.getItem("usuario");
+  const nombreUsuario = userJSON ? JSON.parse(userJSON).correo : "User";
 
   const handleLogout = () => {
     logout(); // limpia datos

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { getReservasByEmail } from "../services/reservaService";
+//import { getReservasByEmail } from "../services/reservaService";
 import ReservaCard from "../components/ReservaCard";
 import "../styles/reservas.css";
+import { obtenerReservas } from "../../api"
+import { useAuth, AUTH_ACTIONS  } from "../context/AuthContext";
 
 const TABS = [
   { key: "historial", label: "Historial" },
@@ -10,21 +12,31 @@ const TABS = [
 ];
 
 const MisReservas = () => {
+  const { state } = useAuth();
   const [reservas, setReservas] = useState([]);
   const [tabActiva, setTabActiva] = useState("historial");
 
-  const storedUser = localStorage.getItem("user");
-  const user = storedUser ? JSON.parse(storedUser) : null;
-
   const cargarReservas = () => {
-    if (!user?.email) return;
-    const data = getReservasByEmail(user.email);
-    setReservas(data);
-  };
-
+    obtenerReservas(state.usuario.id).then(setReservas);
+  }
+  
   useEffect(() => {
+    if(!state.token) return;
     cargarReservas();
-  }, []);
+  }, [state.token]);
+
+  // const storedUser = localStorage.getItem("user");
+  // const user = storedUser ? JSON.parse(storedUser) : null;
+
+  // // const cargarReservas = () => {
+  // //   if (!user?.email) return;
+  // //   const data = getReservasByEmail(user.email);
+  // //   setReservas(data);
+  // // };
+
+  // // useEffect(() => {
+  // //   cargarReservas();
+  // // }, []);
 
   const reservasFiltradas =
     tabActiva === "historial"
@@ -68,7 +80,7 @@ const MisReservas = () => {
         ) : (
           <div className="row g-4">
             {reservasFiltradas.map((reserva) => (
-              <div className="col-12 col-md-6 col-xl-4" key={reserva.id}>
+              <div className="col-12 col-md-6 col-xl-4" key={reserva._id}>
                 <ReservaCard reserva={reserva} onActualizar={cargarReservas} />
               </div>
             ))}

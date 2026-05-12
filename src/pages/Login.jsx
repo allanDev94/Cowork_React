@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { login } from "../services/authService";
+//import { login } from "../services/authService";
 import "../styles/auth.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth, AUTH_ACTIONS  } from "../context/AuthContext";
+import { iniciarSesion } from "../../api";
 
 const Login = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const { dispatch } = useAuth();
+  const [form, setForm] = useState({ correo: "", constraseña: "" });
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -15,16 +18,16 @@ const Login = () => {
   };
 
   const validate = () => {
-    if (!form.email || !form.password) {
+    if (!form.correo || !form.constraseña) {
       return "Todos los campos son obligatorios";
     }
 
-    if (!form.email.includes("@")) {
+    if (!form.correo.includes("@")) {
       return "Correo inválido";
     }
 
-    if (form.password.length < 6) {
-      return "Contraseña incorrecta";
+    if (form.constraseña.length < 6) {
+      return "constraseña incorrecta";
     }
 
     return null;
@@ -32,8 +35,9 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     const validationError = validate();
     if (validationError) {
@@ -41,14 +45,31 @@ const Login = () => {
       return;
     }
 
-    const result = login(form.email, form.password);
+    try{
+      const result = await iniciarSesion(form.correo, form.constraseña);
+      // Decodificar el payload del JWT para obtener los datos del usuario
+      const payload = JSON.parse(atob(result.token.split(".")[1]));
 
-    if (!result.success || !result.user) {
-      setError(result.message || "Error al iniciar sesión");
-    } else {
-      localStorage.setItem("user", JSON.stringify(result.user));
+      dispatch({
+        type: AUTH_ACTIONS.LOGIN,
+        payload: {
+          token: result.token,
+          usuario: { id: payload.id, correo: payload.correo, rol: payload.rol, nombre: payload.nombre, numero: payload.numero},
+        },
+      });
       navigate("/espacios");
+    }catch(err){
+      setError(err.message || "Error al iniciar sesión");
     }
+
+    // const result = iniciarSesion(form.correo, form.constraseña);
+
+    // if (!result.success || !result.user) {
+    //   setError(result.message || "Error al iniciar sesión");
+    // } else {
+    //   localStorage.setItem("user", JSON.stringify(result.user));
+    //   navigate("/espacios");
+    // }
   };
 
   return (
@@ -59,7 +80,7 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="w-100">
           <input
             type="email"
-            name="email"
+            name="correo"
             placeholder="Correo"
             className="form-control mb-3"
             onChange={handleChange}
@@ -67,8 +88,8 @@ const Login = () => {
 
           <input
             type="password"
-            name="password"
-            placeholder="Contraseña"
+            name="constraseña"
+            placeholder="constraseña"
             className="form-control mb-3"
             onChange={handleChange}
           />
@@ -89,7 +110,7 @@ const Login = () => {
 
         <p>
           <Link to="/forgot-password" className="auth-link">
-            ¿Olvidaste tu contraseña?
+            ¿Olvidaste tu constraseña?
           </Link>
         </p>
       </div>

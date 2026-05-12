@@ -1,4 +1,5 @@
-import { cancelarReserva } from "../services/reservaService";
+//import { cancelarReserva } from "../services/reservaService";
+import { cancelarReserva } from "../../api";
 
 const estadoBadge = {
   activa: { label: "Activa", clase: "badge bg-success" },
@@ -11,14 +12,15 @@ const ReservaCard = ({ reserva, onActualizar }) => {
     clase: "badge bg-secondary",
   };
 
-  const formatearFecha = (fecha) => {
-    const [año, mes, dia] = fecha.split("-");
-    return `${dia}/${mes}/${año}`;
-  };
+  // const formatearFecha = (fecha) => {
+  //   const [año, mes, dia] = fecha.split("-");
+  //   return `${dia}/${mes}/${año}`;
+  // };
 
-  const handleCancelar = () => {
+  const handleCancelar = async () => {
     if (window.confirm("¿Cancelar esta reserva?")) {
-      cancelarReserva(reserva.id);
+      const nuevoEstado = { nuevoEstado: "cancelada"}
+      await cancelarReserva(reserva._id, nuevoEstado);
       onActualizar();
     }
   };
@@ -33,28 +35,28 @@ const ReservaCard = ({ reserva, onActualizar }) => {
           className="d-flex justify-content-between align-items-center"
           style={{ flexWrap: "wrap", gap: "8px" }}
         >
-          <h5 className="card-title mb-0">{reserva.sala}</h5>
+          <h5 className="card-title mb-0">{reserva.idEspacio.nombre}</h5>
           <span className={badge.clase}>{badge.label}</span>
         </div>
 
         <p className="mb-0 text-muted">
           <i className="bi bi-calendar3 me-1"></i>
-          {formatearFecha(reserva.fecha)} — Hora: {reserva.hora}
+          {reserva.fecha} — Hora: {reserva.horaInicio}
         </p>
 
         <p className="mb-0 text-muted">
           <i className="bi bi-person me-1"></i>
-          {reserva.nombre}
+          {reserva.idUsuario.nombre}
         </p>
 
         <p className="mb-0 text-muted">
           <i className="bi bi-envelope me-1"></i>
-          {reserva.email}
+          {reserva.idUsuario.correo}
         </p>
 
         <p className="mb-0 text-muted">
           <i className="bi bi-telephone me-1"></i>
-          {reserva.telefono}
+          {reserva.idUsuario.numero}
         </p>
 
         {reserva.estado === "activa" && (

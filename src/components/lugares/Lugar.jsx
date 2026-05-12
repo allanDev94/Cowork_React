@@ -1,6 +1,6 @@
 import "../../styles/lugar.css";
 
-const Lugares = ({ lugar, onClick, isActive = false }) => {
+const Lugar = ({ ubicacion, onClick, isActive = false }) => {
   return (
     <>
       <div className="col-md-3">
@@ -8,11 +8,11 @@ const Lugares = ({ lugar, onClick, isActive = false }) => {
           className={`card shadow-sm border-0 text-center lugar ${
             isActive ? "active" : ""
           }`}
-          onClick={() => onClick(lugar)}
+          onClick={() => onClick(ubicacion)}
           style={{ cursor: "pointer" }}
         >
           <div className="card-body py-4">
-            <h5 className="mb-0 text-capitalize">{lugar}</h5>
+            <h5 className="mb-0 text-capitalize">{ubicacion}</h5>
           </div>
         </div>
       </div>
@@ -20,4 +20,4 @@ const Lugares = ({ lugar, onClick, isActive = false }) => {
   );
 };
 
-export default Lugares;
+export default Lugar;

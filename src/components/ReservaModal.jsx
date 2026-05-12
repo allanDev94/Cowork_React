@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
-import { crearReserva } from "../services/reservaService";
+//import { crearReserva } from "../services/reservaService";
+import { crearReserva } from "../../api";
+import { useAuth, AUTH_ACTIONS  } from "../context/AuthContext";
 
 const ReservaModal = ({ espacio, onClose }) => {
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
 
+  const { state } = useAuth();
+
   const [form, setForm] = useState({
     nombre: "",
     telefono: "",
-    email: user?.email || "",
+    correo: user?.correo || "",
     fecha: "",
     hora: "",
     duracion: "",
@@ -20,7 +24,7 @@ const ReservaModal = ({ espacio, onClose }) => {
       setForm({
         nombre: "",
         telefono: "",
-        email: user?.email || "",
+        correo: user?.correo || "",
         fecha: "",
         hora: "",
         duracion: "",
@@ -94,8 +98,8 @@ const ReservaModal = ({ espacio, onClose }) => {
     }));
   };
 
-  const handleSubmit = () => {
-    const { nombre, telefono, email, fecha, hora, duracion } = form;
+  const handleSubmit = async () => {
+    const { fecha, hora, duracion } = form;
 
     const today = new Date().toLocaleDateString("sv-SE");
 
@@ -104,7 +108,7 @@ const ReservaModal = ({ espacio, onClose }) => {
       return;
     }
 
-    if (!nombre || !telefono || !email || !fecha || !hora) {
+    if (!fecha || !hora) {
       alert("Completa todos los campos");
       return;
     }
@@ -116,13 +120,21 @@ const ReservaModal = ({ espacio, onClose }) => {
 
     const horaIndex = horas.indexOf(hora);
     const horaFin = horas[horaIndex + Number(duracion)];
+    const datosReserva = {
+      idEspacio: espacio._id,
+      fecha: fecha,
+      horaInicio: hora,
+      horaFin: obtenerHoraFin(),
+      idUsuario: state.usuario.id
+    }
 
-    crearReserva({
-      ...form,
-      horaFin,
-      espacioId: espacio.id,
-      sala: espacio.nombre,
-    });
+    await crearReserva(datosReserva)
+    // crearReserva({
+    //   ...form,
+    //   horaFin,
+    //   espacioId: espacio.id,
+    //   sala: espacio.nombre,
+    // });
 
     alert("Reserva creada ✅");
     onClose();
@@ -148,22 +160,24 @@ const ReservaModal = ({ espacio, onClose }) => {
             <input
               name="nombre"
               placeholder="Nombre"
+              value={state.usuario.nombre}
               className="form-control mb-2"
-              onChange={handleChange}
+              disabled
             />
 
             <input
               name="telefono"
               placeholder="Teléfono"
+              value={state.usuario.numero}
               className="form-control mb-2"
-              onChange={handleChange}
+              disabled
             />
 
             <input
-              name="email"
+              name="correo"
               className="form-control mb-2"
-              value={form.email}
-              onChange={handleChange}
+              value={state.usuario.correo}
+              disabled
             />
 
             <input
